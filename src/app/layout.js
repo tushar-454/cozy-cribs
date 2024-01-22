@@ -1,3 +1,4 @@
+import Header from '@/components/shared/Header';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <h1>Header</h1>
+        <Header />
         {children}
         <Toaster />
       </body>
