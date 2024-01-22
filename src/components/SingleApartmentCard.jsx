@@ -13,7 +13,7 @@ const apartment =
 
 const SingleApartmentCard = () => {
   return (
-    <div className='space-y-3 rounded-lg border p-4'>
+    <div className='space-y-3 rounded-lg border bg-white p-4'>
       {/* image  */}
       <div className='w-full'>
         <img
