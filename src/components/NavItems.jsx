@@ -25,12 +25,13 @@ const NavItems = () => {
       </div>
       {/* actual all nav items  */}
       <div
-        className={`absolute -right-32 top-[30px] flex-col gap-2 space-y-5 rounded-bl-md rounded-br-md border bg-slate-50 p-3 transition-all lg:static lg:right-0 lg:top-0 lg:flex-row lg:space-y-0 lg:border-none lg:bg-none lg:p-0  ${
+        className={`lg:transform-undo absolute -right-32 top-[30px] flex-col gap-2 space-y-5 rounded-bl-md rounded-br-md border bg-slate-50 p-3 transition-all lg:static lg:right-0  lg:top-0 lg:flex-row lg:space-y-0 lg:border-none lg:bg-none lg:p-0 ${
           isNavItemsOpen ? 'transform-undo' : 'transform'
         }`}
       >
-        {navItems?.map((navItem) => (
+        {navItems?.map((navItem, index) => (
           <Link
+            key={index}
             href={navItem.path}
             className={`block rounded-full bg-slate-200/50 px-4 py-2 text-lg font-medium transition hover:bg-slate-300 lg:mr-1 lg:inline-block ${
               pathName === navItem.path ? '!bg-slate-300' : ''
