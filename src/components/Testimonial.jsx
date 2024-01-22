@@ -6,6 +6,7 @@ import Container from './shared/Container';
 const Testimonial = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const testimonialBox = useRef(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const testimonials = [
     {
@@ -92,8 +93,11 @@ const Testimonial = () => {
       clearInterval(intervalId);
     };
   }, [currentSlider]);
+  useEffect(() => {
+    const isSmallScreen = window.innerWidth <= 768;
+    setIsSmallScreen(isSmallScreen);
+  }, []);
 
-  const isSmallScreen = window.innerWidth <= 768;
   return (
     <section className='py-10'>
       <Container>

@@ -8,7 +8,7 @@ export const Faq = () => {
     setIsOpen((prevIdx) => (prevIdx === idx ? null : idx));
   };
   return (
-    <section>
+    <section className='py-10'>
       <Container>
         <h1 className='my-5 text-center text-3xl  font-bold'>
           Frequently asked question

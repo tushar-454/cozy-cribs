@@ -1,3 +1,4 @@
+import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Header />
         {children}
+        <Footer />
         <Toaster />
       </body>
     </html>
