@@ -10,7 +10,9 @@ const Header = () => {
         <div className='flex items-center justify-between py-2'>
           {/* header logo */}
           <div>
-            <h1 className='text-3xl font-black'>Cozy Cribs</h1>
+            <h1 className='whitespace-nowrap text-3xl font-black'>
+              Cozy Cribs
+            </h1>
           </div>
           {/* header nav  */}
           <NavItems />

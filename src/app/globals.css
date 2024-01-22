@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.transform {
+  transform-origin: top;
+  transform: perspective(999px) rotateX(-30deg) translateZ(0) translateZ(5px) !important;
+  visibility: hidden;
+  opacity: 0;
+}
+.transform-undo {
+  transform-origin: top;
+  transform: perspective(999px) rotateX(0) translateZ(0) translateZ(5px) !important;
+  visibility: visible;
+  opacity: 1;
+}
