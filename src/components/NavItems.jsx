@@ -1,11 +1,10 @@
 'use client';
-import { FaBars } from 'react-icons/fa';
-import { HiOutlineX } from 'react-icons/hi';
-
 import navItems from '@/utils/navItems';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { HiOutlineX } from 'react-icons/hi';
 
 const NavItems = () => {
   const pathName = usePathname();
@@ -15,7 +14,7 @@ const NavItems = () => {
       {/* small device nav items collapse & uncollapse button */}
       <div
         onClick={() => setIsNavItemsOpen(!isNavItemsOpen)}
-        className='absolute -top-6 right-2 rounded-2xl bg-slate-200/50 px-3 py-2 lg:hidden'
+        className='absolute -top-6 right-2 cursor-pointer rounded-2xl bg-slate-200/50 px-3 py-2 lg:hidden'
       >
         {isNavItemsOpen ? (
           <HiOutlineX className='text-3xl' />
@@ -33,6 +32,7 @@ const NavItems = () => {
           <Link
             key={index}
             href={navItem.path}
+            onClick={() => setIsNavItemsOpen(false)}
             className={`block rounded-full bg-slate-200/50 px-4 py-2 text-lg font-medium transition hover:bg-slate-300 lg:mr-1 lg:inline-block ${
               pathName === navItem.path ? '!bg-slate-300' : ''
             }`}

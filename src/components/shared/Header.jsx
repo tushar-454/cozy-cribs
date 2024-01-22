@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import NavItems from '../NavItems';
 import UserAccount from '../UserAccount';
 import Container from './Container';
@@ -10,9 +11,9 @@ const Header = () => {
         <div className='flex items-center justify-between py-2'>
           {/* header logo */}
           <div>
-            <h1 className='whitespace-nowrap text-3xl font-black'>
+            <Link href={'/'} className='whitespace-nowrap text-3xl font-black'>
               Cozy Cribs
-            </h1>
+            </Link>
           </div>
           {/* header nav  */}
           <NavItems />
