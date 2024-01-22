@@ -1,4 +1,5 @@
 import { Carousel } from '@/components/Carousel';
+import { Faq } from '@/components/Faq';
 import PopulerHouse from '@/components/PopulerHouse';
 import Testimonial from '@/components/Testimonial';
 
@@ -8,6 +9,7 @@ const Home = () => {
       <Carousel />
       <PopulerHouse />
       <Testimonial />
+      <Faq />
     </main>
   );
 };
