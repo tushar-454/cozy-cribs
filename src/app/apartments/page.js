@@ -9,7 +9,7 @@ const page = () => {
           All Apartment List
         </h1>
         {/* all apartment list wrapper  */}
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-4 py-5 md:grid-cols-2 lg:grid-cols-3'>
           {/* single apartment card  */}
           {[{}, {}, {}, {}].map((apartment, index) => (
             <SingleApartmentCard key={index} />
