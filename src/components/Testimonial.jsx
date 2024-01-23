@@ -108,7 +108,7 @@ const Testimonial = () => {
           className='mx-auto flex  flex-row items-center gap-5 overflow-hidden lg:gap-10'
         >
           <div className='relative overflow-hidden'>
-            <div className='absolute flex h-full w-full items-center justify-between px-5'>
+            <div className='absolute z-50 flex h-full w-full items-center justify-between px-5'>
               {/* arrow left */}
               <button
                 onClick={prevSlider}
