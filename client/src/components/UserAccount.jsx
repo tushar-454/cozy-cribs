@@ -10,7 +10,7 @@ const UserAccount = () => {
   const isLoggedIn = true;
   const [dropdown, setDropdown] = useState(false);
   return (
-    <div>
+    <div className='relative'>
       {isLoggedIn ? (
         <>
           <div
@@ -27,10 +27,7 @@ const UserAccount = () => {
           </div>
           {/* <!-- Dropdown menu --> */}
           <div
-            style={{
-              right: isLoggedIn ? '0px' : '-9rem',
-            }}
-            className={`absolute top-12 z-[99999] origin-top-right transition ${
+            className={`absolute right-0 top-11 z-[99999] origin-top-right transition ${
               dropdown ? 'scale-100' : 'scale-0'
             } my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700`}
           >

@@ -24,7 +24,7 @@ const NavItems = () => {
       </div>
       {/* actual all nav items  */}
       <div
-        className={`absolute -right-32 top-[30px] z-50 flex-col gap-2 space-y-5 rounded-bl-md rounded-br-md border bg-slate-50 p-3 transition-all lg:static lg:right-0  lg:top-0 lg:flex-row lg:space-y-0 lg:border-none lg:bg-none lg:p-0 ${
+        className={`absolute -right-0 top-8 z-50 flex-col gap-2 space-y-5 rounded-bl-md rounded-br-md border bg-slate-50 p-3 transition-all lg:static lg:right-0  lg:top-0 lg:flex-row lg:space-y-0 lg:border-none lg:bg-none lg:p-0 ${
           isNavItemsOpen ? 'transform-undo' : 'transform'
         }`}
       >
