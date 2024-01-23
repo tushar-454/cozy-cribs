@@ -50,6 +50,22 @@ const page = () => {
                   name='email'
                   placeholder={'example@gmail.com'}
                 />
+                <Input
+                  displayName='Phone Number'
+                  type='tel'
+                  id={'phone'}
+                  name='phone'
+                  placeholder={'+880 1234 567890'}
+                />
+                <select
+                  id='role'
+                  name='role'
+                  className='focus:border-sun-500 focus:ring-sun-500 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-400 dark:focus:ring-gray-600'
+                >
+                  <option value={''}>Choose your Role</option>
+                  <option value={'owner'}>House Owner</option>
+                  <option value={'renter'}>House Renter</option>
+                </select>
                 <InputFile
                   displayName={'Upload your photo'}
                   type='file'
