@@ -14,11 +14,11 @@ const UserAccount = () => {
       {isLoggedIn ? (
         <>
           <div
-            className='group relative mr-3 flex rounded-full bg-gray-800 text-sm md:mr-0'
+            className='group relative flex h-12 w-12 rounded-full bg-gray-800 text-sm'
             onClick={() => setDropdown(!dropdown)}
           >
             <Image
-              className='h-12 w-12 cursor-pointer rounded-full'
+              className='h-full w-full cursor-pointer rounded-full object-cover'
               src={'https://cutt.ly/BwLkXPVV'}
               alt='user photo'
               width={48}
@@ -27,7 +27,7 @@ const UserAccount = () => {
           </div>
           {/* <!-- Dropdown menu --> */}
           <div
-            className={`absolute right-36 top-12 z-50 origin-top-right transition ${
+            className={`absolute right-36 top-12 z-[99999] origin-top-right transition ${
               dropdown ? 'scale-100' : 'scale-0'
             } my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700`}
           >
@@ -40,13 +40,16 @@ const UserAccount = () => {
               </span>
             </div>
             <ul className='py-2' aria-labelledby='user-menu-button'>
-              <li
-                onClick={() => {
-                  setDropdown(false);
-                }}
-                className='flex cursor-pointer items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Dashboard <MdOutlineSpaceDashboard />
+              <li>
+                <Link
+                  href='/dashboard'
+                  onClick={() => {
+                    setDropdown(false);
+                  }}
+                  className='flex cursor-pointer items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white'
+                >
+                  Dashboard <MdOutlineSpaceDashboard />
+                </Link>
               </li>
               <li
                 onClick={() => {
