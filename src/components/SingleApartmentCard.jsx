@@ -2,6 +2,7 @@ import { AiOutlineApartment } from 'react-icons/ai';
 import { FaBuildingFlag } from 'react-icons/fa6';
 import { LiaBathSolid } from 'react-icons/lia';
 
+import Image from 'next/image';
 import {
   IoBedOutline,
   IoLocationOutline,
@@ -16,10 +17,12 @@ const SingleApartmentCard = () => {
     <div className='space-y-3 rounded-lg border bg-white p-4'>
       {/* image  */}
       <div className='w-full'>
-        <img
+        <Image
           src={apartment}
           alt='apartment image'
           className='w-full rounded-lg object-cover'
+          width={1920}
+          height={300}
         />
       </div>
       {/* location  */}

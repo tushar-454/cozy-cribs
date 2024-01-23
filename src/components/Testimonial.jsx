@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import Container from './shared/Container';
@@ -149,10 +150,12 @@ const Testimonial = () => {
                       {each?.testimonialDescription}
                     </p>
                     <a className='inline-flex items-center'>
-                      <img
+                      <Image
                         alt='testimonial'
                         src={`https://source.unsplash.com/200x200/?${each.keyWord}`}
                         className='h-12 w-12 flex-shrink-0 rounded-full object-cover object-center'
+                        width={48}
+                        height={48}
                       />
                       <span className='flex flex-grow flex-col pl-4'>
                         <span className='title-font font-medium text-gray-900'>

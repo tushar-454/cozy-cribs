@@ -1,5 +1,6 @@
 'use client';
 import sliderImages from '@/utils/sliderImages';
+import Image from 'next/image';
 import { useState } from 'react';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 
@@ -57,10 +58,12 @@ export const Carousel = () => {
           {/* sliders */}
           {sliderImages.map((slide, inx) => (
             <div key={inx} className='min-w-full duration-200'>
-              <img
+              <Image
                 src={slide.img}
                 className='h-72 w-full object-cover sm:h-96 md:h-[670px]'
                 alt={`Slider - ${inx + 1}`}
+                width={1920}
+                height={288}
               />
             </div>
           ))}

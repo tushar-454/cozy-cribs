@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { AiFillStar, AiOutlineApartment, AiOutlineStar } from 'react-icons/ai';
 import { FaBuildingFlag } from 'react-icons/fa6';
 import {
@@ -77,10 +78,12 @@ const ApartmentDetails = () => {
         <div className='flex justify-between gap-3'>
           {/* owner info  */}
           <div className='flex items-center gap-3'>
-            <img
+            <Image
               src={'https://cutt.ly/BwLkXPVV'}
               alt='owner'
               className='h-14 w-14 cursor-pointer rounded-full object-cover'
+              width={56}
+              height={56}
             />
             <div>
               <h1 className='text-xl font-bold'>John Doe</h1>
