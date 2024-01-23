@@ -1,9 +1,10 @@
-const Checkbox = ({ displayName, id, ...rest }) => {
+const Checkbox = ({ displayName, id, formdata, ...rest }) => {
   return (
     <div className='flex items-center'>
       <div className='flex'>
         <input
           {...rest}
+          {...formdata}
           id={id}
           className='pointer-events-none mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:checked:border-blue-500 dark:checked:bg-blue-500 dark:focus:ring-offset-gray-800'
         />
