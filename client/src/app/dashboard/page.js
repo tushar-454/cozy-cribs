@@ -1,9 +1,18 @@
 'use client';
+import { AuthContext } from '@/authProvider/AuthProvider';
 import AsideItems from '@/components/AsideItems';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useContext, useEffect, useState } from 'react';
 
 const Dashboard = ({ children }) => {
   const [isCollapse, setIsCollapse] = useState(false);
+  const router = useRouter();
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    if (user === null || user === 'null') {
+      router.push('/');
+    }
+  }, []);
   return (
     <section>
       <div className='relative flex'>
