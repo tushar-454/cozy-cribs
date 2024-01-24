@@ -34,6 +34,16 @@ const addApartment = async (req, res, next) => {
   }
 };
 
+const getApartment = async (req, res, next) => {
+  try {
+    const apartments = await Apartment.find();
+    res.status(200).json({ success: true, apartments });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addApartment,
+  getApartment,
 };
