@@ -1,13 +1,15 @@
 'use client';
+import { AuthContext } from '@/authProvider/AuthProvider';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { MdOutlineSpaceDashboard } from 'react-icons/md';
 import { PiSignOutBold } from 'react-icons/pi';
 import { TbLogin2 } from 'react-icons/tb';
 
 const UserAccount = () => {
-  const isLoggedIn = true;
+  const { user, logout } = useContext(AuthContext);
+  const isLoggedIn = !!Object.keys(user || {}).length;
   const [dropdown, setDropdown] = useState(false);
   return (
     <div className='relative'>
@@ -19,7 +21,7 @@ const UserAccount = () => {
           >
             <Image
               className='h-full w-full cursor-pointer rounded-full object-cover'
-              src={'https://cutt.ly/BwLkXPVV'}
+              src={user?.photoUrl || 'https://cutt.ly/BwLkXPVV'}
               alt='user photo'
               width={48}
               height={48}
@@ -33,10 +35,10 @@ const UserAccount = () => {
           >
             <div className='px-4 py-3'>
               <span className='block text-gray-900 dark:text-white'>
-                {'Jhon Dou'}
+                {user?.name || 'Jhon Dou'}
               </span>
               <span className='block  truncate text-gray-500 dark:text-gray-400'>
-                {'jhondou@gamil.com'}
+                {user?.email || 'jhondou@gamil.com'}
               </span>
             </div>
             <ul className='py-2' aria-labelledby='user-menu-button'>
@@ -54,6 +56,7 @@ const UserAccount = () => {
               <li
                 onClick={() => {
                   setDropdown(false);
+                  logout();
                 }}
                 className='flex cursor-pointer items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white'
               >
