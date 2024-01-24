@@ -1,3 +1,4 @@
+import AuthProvider from '@/authProvider/AuthProvider';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 import { Inter } from 'next/font/google';
@@ -15,10 +16,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,11 +1,93 @@
 'use client';
+import API_BASE_URL from '@/api/config';
+import { AuthContext } from '@/authProvider/AuthProvider';
 import Checkbox from '@/components/ui/Checkbox';
 import Input from '@/components/ui/Input';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { RxCross2 } from 'react-icons/rx';
 import { TbLogin2 } from 'react-icons/tb';
 
+const resolver = async (values) => {
+  const errors = {};
+  if (!values.email) {
+    errors.email = {
+      type: 'required',
+      message: 'Email is required.',
+    };
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = {
+      type: 'pattern',
+      message: 'Email is invalid.',
+    };
+  }
+  // check password
+  if (!values.password) {
+    errors.password = {
+      type: 'required',
+      message: 'Password is required.',
+    };
+  } else if (values.password.length < 6) {
+    errors.password = {
+      type: 'minLength',
+      message: 'Must have at least 6 characters.',
+    };
+  } else if (!/(?=.*[a-z])/.test(values.password)) {
+    errors.password = {
+      type: 'pattern',
+      message: 'Must have at least one lowercase letter.',
+    };
+  } else if (!/(?=.*[A-Z])/.test(values.password)) {
+    errors.password = {
+      type: 'pattern',
+      message: 'Must have at least one uppercase letter.',
+    };
+  } else if (!/(?=.*[0-9])/.test(values.password)) {
+    errors.password = {
+      type: 'pattern',
+      message: 'Must have at least one number.',
+    };
+  } else if (!/(?=.*[!@#$%^&*])/.test(values.password)) {
+    errors.password = {
+      type: 'pattern',
+      message: 'Must have at least one special character.',
+    };
+  }
+  return {
+    values,
+    errors,
+  };
+};
+
 const page = () => {
+  const router = useRouter();
+  const { setUser } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver });
+  const onSubmit = async (data) => {
+    const res = await fetch(`${API_BASE_URL}/user/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: data.email, password: data.password }),
+      credentials: 'include',
+    });
+    const { success, message, data: userData } = await res.json();
+    if (success) {
+      toast.success('Login successfully!');
+      setUser(userData);
+      router.push('/');
+    } else {
+      toast.error(message);
+    }
+  };
   return (
     <section className='min-h-screen bg-white dark:bg-gray-900'>
       <main className='mx-auto w-full max-w-md p-6 '>
@@ -33,7 +115,7 @@ const page = () => {
             </div>
 
             {/* <!-- Form --> */}
-            <form onSubmit={() => {}}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className='grid gap-y-4'>
                 <Input
                   displayName='Email address'
@@ -41,6 +123,8 @@ const page = () => {
                   id={'email'}
                   name='email'
                   placeholder={'example@gmail.com'}
+                  formdata={{ ...register('email', { required: true }) }}
+                  error={errors?.email && errors?.email?.message}
                 />
                 <Input
                   displayName='Password'
@@ -49,6 +133,8 @@ const page = () => {
                   name='password'
                   placeholder={'s909j*(^&'}
                   isGroup={true}
+                  formdata={{ ...register('password', { required: true }) }}
+                  error={errors?.password && errors?.password?.message}
                 />
                 <Checkbox
                   displayName={'Remember Me'}
@@ -56,7 +142,10 @@ const page = () => {
                   type='checkbox'
                   name='remember-me'
                 />
-                <button className='inline-block rounded-full bg-blue-400 px-6 py-2 text-lg font-medium text-white transition hover:bg-blue-500 active:bg-blue-600'>
+                <button
+                  type='submit'
+                  className='inline-block rounded-full bg-blue-400 px-6 py-2 text-lg font-medium text-white transition hover:bg-blue-500 active:bg-blue-600'
+                >
                   <span className='flex items-center justify-center gap-2'>
                     Login
                     <TbLogin2 />
