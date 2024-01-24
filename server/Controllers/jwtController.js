@@ -7,28 +7,10 @@ const createToken = async (req, res, next) => {
     const token = await jwt.sign(payload, process.env.TOKEN_SECRET, {
       expiresIn: '1h',
     });
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-    });
-    res.send({ success: true });
+    res.send({ success: true, token: token });
   } catch (error) {
     next(error);
   }
 };
 
-const removeToken = async (_req, res) => {
-  try {
-    res.clearCookie('token', {
-      maxAge: 0,
-      secure: true,
-      sameSite: 'none',
-    });
-    res.send({ success: true });
-  } catch (error) {
-    next(error);
-  }
-};
-
-module.exports = { createToken, removeToken };
+module.exports = { createToken };

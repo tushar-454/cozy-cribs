@@ -83,6 +83,16 @@ const page = () => {
     if (success) {
       toast.success('Login successfully!');
       setUser(userData);
+      const resToken = await fetch(`${API_BASE_URL}/jwt/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: data.email }),
+        credentials: 'include',
+      });
+      const { token } = await resToken.json();
+      localStorage.setItem('token', token);
       router.push('/');
     } else {
       toast.error(message);
