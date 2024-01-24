@@ -18,7 +18,13 @@ const apartmentSchema = new Schema({
     required: true,
   },
   location: {
-    type: String,
+    type: {
+      block: String,
+      road: String,
+      flor: String,
+      house: String,
+      apartment: String,
+    },
     required: true,
   },
   price: {

@@ -1,4 +1,5 @@
 const User = require('../Model/User');
+const Apartment = require('../Model/apartment');
 
 const createUser = async (req, res, next) => {
   try {
@@ -60,7 +61,22 @@ const loginUser = async (req, res, next) => {
   }
 };
 
+const getApartment = async (req, res, next) => {
+  try {
+    const { populer } = req.query;
+    if (populer === 'true') {
+      const apartments = await Apartment.find().sort({ price: -1 }).limit(3);
+      return res.status(200).json({ success: true, apartments });
+    }
+    const apartments = await Apartment.find();
+    res.status(200).json({ success: true, apartments });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
   loginUser,
+  getApartment,
 };
