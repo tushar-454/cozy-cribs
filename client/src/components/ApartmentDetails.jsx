@@ -9,7 +9,7 @@ import {
 import { LiaBathSolid } from 'react-icons/lia';
 import { MdFollowTheSigns } from 'react-icons/md';
 
-const ApartmentDetails = () => {
+const ApartmentDetails = ({ apartment }) => {
   return (
     <div className='w-full md:w-1/2'>
       {/* apartment details  */}
@@ -18,36 +18,25 @@ const ApartmentDetails = () => {
         {/* location  */}
         <p className='flex items-center gap-1'>
           <IoLocationOutline />
-          Apartment - Gulshan Ave
+          {apartment.city}
         </p>
         {/* apartment name */}
-        <h1 className='text-2xl font-bold'>South Sun House House</h1>
+        <h1 className='text-2xl font-bold'>{apartment.name}</h1>
         {/* apartment details */}
-        <p>
-          Modern and spacious apartment with open-concept living areas, offering
-          a perfect blend of comfort an
-        </p>
-        <p>
-          Modern and spacious apartment with open-concept living areas, offering
-          a perfect blend of comfort an
-        </p>
-        <p>
-          Modern and spacious apartment with open-concept living areas, offering
-          a perfect blend of comfort an
-        </p>
+        <p>{apartment.description}</p>
         {/* apartment address details */}
         <div className='flex justify-between border-b pb-3'>
           <small className='flex items-center gap-1'>
             <FaBuildingFlag />
-            BLOCK - A
+            Block - {apartment?.location?.block}
           </small>
           <small className='flex items-center gap-1'>
             <MdFollowTheSigns />
-            FLOOR - 4A
+            Road - {apartment?.location?.road}
           </small>
           <small className='flex items-center gap-1'>
             <AiOutlineApartment />
-            APT. NO - 102-B
+            House - {apartment?.location?.house}
           </small>
         </div>
         {/* apartment price and other details */}
@@ -56,13 +45,13 @@ const ApartmentDetails = () => {
           <div className='flex items-center gap-3'>
             <p className='flex items-center gap-1'>
               <IoMoveOutline />
-              150m<sup>2</sup>
+              {apartment?.roomDetails?.size}m<sup>2</sup>
             </p>
             <p className='flex items-center gap-1'>
-              <IoBedOutline /> 2
+              <IoBedOutline /> {apartment?.roomDetails?.bedrooms}
             </p>
             <p className='flex items-center gap-1'>
-              <LiaBathSolid /> 1
+              <LiaBathSolid /> {apartment?.roomDetails?.bathrooms}
             </p>
           </div>
         </div>
@@ -79,16 +68,21 @@ const ApartmentDetails = () => {
           {/* owner info  */}
           <div className='flex items-center gap-3'>
             <Image
-              src={'https://cutt.ly/BwLkXPVV'}
+              src={apartment?.ownerInfo?.image}
               alt='owner'
               className='h-14 w-14 cursor-pointer rounded-full object-cover'
               width={56}
               height={56}
             />
             <div>
-              <h1 className='text-xl font-bold'>John Doe</h1>
-              <a href='tel:+8801234567890' className='text-gray-500'>
-                +880 1234567890
+              <h1 className='text-xl font-bold'>
+                {apartment?.ownerInfo?.name}
+              </h1>
+              <a
+                href={`tel:${apartment?.ownerInfo?.name}`}
+                className='text-gray-500'
+              >
+                {apartment?.ownerInfo?.phone}
               </a>
             </div>
           </div>

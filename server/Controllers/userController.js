@@ -75,8 +75,19 @@ const getApartment = async (req, res, next) => {
   }
 };
 
+const getApartmentById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const apartment = await Apartment.findById(id);
+    res.status(200).json({ success: true, apartment });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
   loginUser,
   getApartment,
+  getApartmentById,
 };

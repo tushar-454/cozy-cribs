@@ -73,7 +73,7 @@ const SingleApartmentCard = ({ apartment }) => {
         </button>
 
         <button className='bg-primary w-full rounded-lg border-2 border-blue-400 py-3 font-semibold text-blue-400 transition hover:border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600'>
-          <Link href={`/apartment/${apartment._id}`}>View Details</Link>
+          <Link href={`/apartments/${apartment._id}`}>View Details</Link>
         </button>
       </div>
     </div>

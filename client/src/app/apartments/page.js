@@ -14,7 +14,7 @@ const page = () => {
       });
   }, []);
   return (
-    <main>
+    <main className='min-h-screen'>
       <Container>
         <h1 className='my-4 text-center text-3xl  font-bold'>
           All Apartment List
