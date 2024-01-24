@@ -29,6 +29,38 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const loginUser = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    // check if user exists
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    } else if (user.password !== password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid password',
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+        photoUrl: user.photoUrl,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
+  loginUser,
 };
